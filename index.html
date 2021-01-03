@@ -7,19 +7,22 @@
     <title>ToDo List Vue 3</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container" id="app">
       <div class="card">
         <h1 class="card__title">ToDo List in Veu JS 3</h1>
-        <input class="card__input" type="text" />
-        <button class="button card__submit" type="submit">ADD</button>
+        <input v-model="input" class="card__input" type="text" />
+        <button @click="addNote" class="button card__submit" type="submit">
+          ADD
+        </button>
 
         <div class="todo-block">
-          <ul class="todo-bloxk__list">
-            <li class="todo-block__item">TEST</li>
+          <ul class="todo-bloxk__list" v-for="note in notes">
+            <li class="todo-block__item">{{ note }}</li>
             <button class="button todo-block__del-item">DELETE</button>
           </ul>
           <h4 class="todo-block__total">
-            Total number of notes: <span class="todo-block__count"></span>
+            Total number of notes:
+            <span class="todo-block__count"> {{ notes.length }}</span>
           </h4>
         </div>
         <h3 class="no-notes">No notes yet. Add the first one</h3>
