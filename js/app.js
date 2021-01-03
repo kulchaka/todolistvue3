@@ -7,8 +7,10 @@ const App = {
   },
   methods: {
     addNote() {
-      this.notes.push(this.input);
-      this.input = "";
+      if (this.input.length > 2) {
+        this.notes.push(this.input);
+        this.input = "";
+      }
     },
   },
 };
