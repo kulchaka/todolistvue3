@@ -12,6 +12,9 @@ const App = {
         this.input = "";
       }
     },
+    removeItem(indx) {
+      this.notes.splice(indx, 1);
+    },
   },
 };
 

@@ -10,15 +10,26 @@
     <div class="container" id="app">
       <div class="card">
         <h1 class="card__title">ToDo List in Veu JS 3</h1>
-        <input v-model="input" class="card__input" type="text" />
+        <input
+          class="card__input"
+          type="text"
+          placeholder="enter your note"
+          v-model="input"
+          @keyup.enter="addNote"
+        />
         <button @click="addNote" class="button card__submit" type="submit">
           ADD
         </button>
 
         <div class="todo-block" v-if="notes.length > 0">
-          <ul class="todo-bloxk__list" v-for="note in notes">
+          <ul class="todo-bloxk__list" v-for="(note, indx) in notes">
             <li class="todo-block__item">{{ note }}</li>
-            <button class="button todo-block__del-item">DELETE</button>
+            <button
+              class="button todo-block__del-item"
+              @click="removeItem(indx)"
+            >
+              DELETE
+            </button>
           </ul>
           <h4 class="todo-block__total">
             Total number of notes: {{ notes.length }}
